@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/hse-experiments-platform/auth/internal/pkg/storage/db"
-	errs "github.com/hse-experiments-platform/auth/pkg/utils/web/errors"
+	errs "github.com/hse-experiments-platform/library/pkg/utils/web/errors"
 	"github.com/jackc/pgx/v5"
 )
 
@@ -24,15 +24,16 @@ type LoginWithGoogleResponse struct {
 }
 
 // LoginWithGoogle godoc
-// @Summary      Try login with Google OAuth2 token
-// @Description  Get userID and paseto token by google oauth2 token
-// @Accept       json
-// @Produce      json
-// @Param        body  body    LoginWithGoogleRequest  true  "body"
-// @Success      200  {object}  LoginWithGoogleResponse
-// @Failure      401  {object}  errors.CodedError
-// @Failure      500  {object}  errors.CodedError
-// @Router       /login/google [post]
+//
+//	@Summary		Try login with Google OAuth2 token
+//	@Description	Get userID and paseto token by google oauth2 token
+//	@Accept			json
+//	@Produce		json
+//	@Param			body	body		LoginWithGoogleRequest	true	"body"
+//	@Success		200		{object}	LoginWithGoogleResponse
+//	@Failure		401		{object}	errors.CodedError
+//	@Failure		500		{object}	errors.CodedError
+//	@Router			/api/v1/login/google [post]
 func (s *AuthService) LoginWithGoogle(ctx context.Context, headers http.Header, r *http.Request) (*LoginWithGoogleResponse, error) {
 	var request LoginWithGoogleRequest
 

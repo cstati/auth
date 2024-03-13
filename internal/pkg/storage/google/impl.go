@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	errs "github.com/hse-experiments-platform/auth/pkg/utils/web/errors"
+	errs "github.com/hse-experiments-platform/library/pkg/utils/web/errors"
 	"google.golang.org/api/googleapi"
 	oauth2api "google.golang.org/api/oauth2/v2"
 )

@@ -4,7 +4,7 @@ sql:
     queries: "query.sql"
     schema: "../../../../../migrations"
     database:
-      uri: postgresql://meta:P@ssw0rd@localhost:5258/metadb
+      uri: postgresql://hseuser:P@ssw0rd@localhost:6432/hsedb
     gen:
       go:
         package: "db"

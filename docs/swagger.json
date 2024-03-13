@@ -7,9 +7,8 @@
         "version": "1.0"
     },
     "host": "tcarzverey.ru:8082",
-    "basePath": "/api/v1",
     "paths": {
-        "/login/google": {
+        "/api/v1/login/google": {
             "post": {
                 "description": "Get userID and paseto token by google oauth2 token",
                 "consumes": [
@@ -52,7 +51,7 @@
                 }
             }
         },
-        "/validate": {
+        "/api/v1/validate": {
             "get": {
                 "description": "Validate user's token and if correct return UserInfo",
                 "produces": [

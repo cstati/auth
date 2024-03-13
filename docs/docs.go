@@ -4,18 +4,16 @@ package docs
 import "github.com/swaggo/swag"
 
 const docTemplate = `{
-    "schemes": {{ marshal .Schemes }},
     "swagger": "2.0",
     "info": {
-        "description": "{{escape .Description}}",
-        "title": "{{.Title}}",
+        "description": "Auth service for mlops project.",
+        "title": "HSE MLOps Auth server",
         "contact": {},
-        "version": "{{.Version}}"
+        "version": "1.0"
     },
-    "host": "{{.Host}}",
-    "basePath": "{{.BasePath}}",
+    "host": "tcarzverey.ru:8082",
     "paths": {
-        "/login/google": {
+        "/api/v1/login/google": {
             "post": {
                 "description": "Get userID and paseto token by google oauth2 token",
                 "consumes": [
@@ -58,7 +56,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/validate": {
+        "/api/v1/validate": {
             "get": {
                 "description": "Validate user's token and if correct return UserInfo",
                 "produces": [
@@ -155,7 +153,6 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "tcarzverey.ru:8082",
-	BasePath:         "/api/v1",
 	Schemes:          []string{},
 	Title:            "HSE MLOps Auth server",
 	Description:      "Auth service for mlops project.",

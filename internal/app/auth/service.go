@@ -3,7 +3,7 @@ package auth
 import (
 	"github.com/hse-experiments-platform/auth/internal/pkg/storage/db"
 	"github.com/hse-experiments-platform/auth/internal/pkg/storage/google"
-	"github.com/hse-experiments-platform/auth/pkg/utils/token"
+	"github.com/hse-experiments-platform/library/pkg/utils/token"
 )
 
 // typecheck

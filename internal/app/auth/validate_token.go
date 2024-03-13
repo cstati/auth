@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	errs "github.com/hse-experiments-platform/auth/pkg/utils/web/errors"
+	errs "github.com/hse-experiments-platform/library/pkg/utils/web/errors"
 )
 
 type UserInfo struct {
@@ -14,14 +14,15 @@ type UserInfo struct {
 }
 
 // CheckToken godoc
-// @Summary      Validate user's token
-// @Description  Validate user's token and if correct return UserInfo
-// @Produce      json
-// @Param        Authorization  header    string  false  "Paseto encrypted token" example(Bearer v2.local.ABCDEFG)
-// @Success      200  {object}  UserInfo
-// @Failure      403  {object}  errors.CodedError
-// @Failure      500  {object}  errors.CodedError
-// @Router       /validate [get]
+//
+//	@Summary		Validate user's token
+//	@Description	Validate user's token and if correct return UserInfo
+//	@Produce		json
+//	@Param			Authorization	header		string	false	"Paseto encrypted token"	example(Bearer v2.local.ABCDEFG)
+//	@Success		200				{object}	UserInfo
+//	@Failure		403				{object}	errors.CodedError
+//	@Failure		500				{object}	errors.CodedError
+//	@Router			/api/v1/validate [get]
 func (s *AuthService) ValidateToken(_ context.Context, _ http.Header, r *http.Request) (*UserInfo, error) {
 	token := r.Header.Get("Authorization")
 	token = strings.TrimPrefix(token, "Bearer ")

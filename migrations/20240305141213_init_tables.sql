@@ -1,6 +1,6 @@
 -- +goose Up
 -- +goose StatementBegin
-create table users (
+create table if not exists users (
   id bigint primary key generated always as identity,
   google_id text not null unique,
   email text not null unique,
@@ -10,5 +10,5 @@ create table users (
 
 -- +goose Down
 -- +goose StatementBegin
-drop table users;
+drop table if exists users;
 -- +goose StatementEnd

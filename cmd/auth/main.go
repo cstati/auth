@@ -14,8 +14,9 @@ import (
 	"github.com/hse-experiments-platform/auth/internal/app/auth"
 	"github.com/hse-experiments-platform/auth/internal/pkg/storage/db"
 	"github.com/hse-experiments-platform/auth/internal/pkg/storage/google"
-	"github.com/hse-experiments-platform/auth/pkg/utils/token"
-	"github.com/hse-experiments-platform/auth/pkg/utils/web"
+	osinit "github.com/hse-experiments-platform/library/pkg/utils/init"
+	"github.com/hse-experiments-platform/library/pkg/utils/token"
+	"github.com/hse-experiments-platform/library/pkg/utils/web"
 	"github.com/jackc/pgx/v5"
 	"github.com/joho/godotenv"
 	httpSwagger "github.com/swaggo/http-swagger"
@@ -29,17 +30,16 @@ func loadEnv() {
 	}
 }
 
-// @title           HSE MLOps Auth server
-// @version         1.0
-// @description     Auth service for mlops project.
+//	@title			HSE MLOps Auth server
+//	@version		1.0
+//	@description	Auth service for mlops project.
 
-// @host      tcarzverey.ru:8082
-// @BasePath  /api/v1
+//	@host	tcarzverey.ru:8082
 
-// @securityDefinitions.apikey  Bearer
-// @in header
-// @name Authorization
-// @description Enter the token with the `Bearer: ` prefix, e.g. \"Bearer abcde12345\"
+//	@securityDefinitions.apikey	Bearer
+//	@in							header
+//	@name						Authorization
+//	@description				Enter the token with the `Bearer: ` prefix, e.g. \"Bearer abcde12345\"
 
 func main() {
 	ctx := context.Background()
@@ -98,7 +98,7 @@ func createHTTPServer(ctx context.Context) {
 
 	dbStorage := db.NewStorage(initDB(ctx))
 	googleStorage := google.NewStorage()
-	maker, err := token.NewMaker("12345678901234567890123456789012")
+	maker, err := token.NewMaker(osinit.MustLoadEnv("CIPHER_KEY"))
 	if err != nil {
 		slog.Error(err.Error())
 		panic(err)
