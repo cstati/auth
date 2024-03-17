@@ -69,7 +69,7 @@ func (s *AuthService) LoginWithGoogle(ctx context.Context, headers http.Header, 
 
 		return nil, fmt.Errorf("s.db.GetUserIDByExternalID(%s): %w", googleInfo.Id, err)
 	}
-	token, err := s.tokenProvider.CreateToken(user.ID, nil, time.Hour*24)
+	token, err := s.tokenProvider.CreateToken(user.ID, nil, time.Hour*24*7)
 	if err != nil {
 		return nil, fmt.Errorf("cannot create token: %w", err)
 	}
