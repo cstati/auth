@@ -14,9 +14,9 @@ insert into problem_metrics (problem_id, metric_id)
 VALUES (1, 1),(1, 2), (1, 3), (2, 3);
 
 insert into models (id, name, description, problem_id)
-values (1, 'Линейная регрессия',
+values (1, 'Linear regression',
         'Модель которая подбирает коэффициенты к фичам и пытается выстроить линейную зависимость для таргета', 1),
-       (2, 'Логистическая регрессия',
+       (2, 'Logisitic regression',
         'Модель которая подбирает коэффициенты к фичам и пытается выстроить линейную зависимость для таргета и привести ее к диапазону [0; 1]',
         2);
 
@@ -36,5 +36,4 @@ truncate table problems restart identity;
 truncate table problem_metrics restart identity;
 truncate table models restart identity;
 truncate table hyperparameters restart identity;
-truncate table trained_models restart identity;
 -- +goose StatementEnd
