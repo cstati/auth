@@ -1,7 +1,7 @@
 -- +goose Up
 -- +goose StatementBegin
 
-CREATE TYPE dataset_status AS ENUM ('initializing', 'loading', 'ready', 'error');
+CREATE TYPE dataset_status AS ENUM ('', 'initializing', 'loading', 'waits_convertation', 'loading_error','convertation_in_progress','convertation_error','ready');
 -- +goose StatementEnd
 
 -- +goose Down
