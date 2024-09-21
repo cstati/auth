@@ -9,9 +9,12 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/hse-experiments-platform/auth/internal/pkg/storage/db"
+	"github.com/cstati/auth/internal/pkg/storage/db"
+	pb "github.com/cstati/auth/pkg/auth"
 	errs "github.com/hse-experiments-platform/library/pkg/utils/web/errors"
 	"github.com/jackc/pgx/v5"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type LoginWithGoogleRequest struct {
@@ -23,18 +26,7 @@ type LoginWithGoogleResponse struct {
 	Token  string `json:"token"`
 }
 
-// LoginWithGoogle godoc
-//
-//	@Summary		Try login with Google OAuth2 token
-//	@Description	Get userID and paseto token by google oauth2 token
-//	@Accept			json
-//	@Produce		json
-//	@Param			body	body		LoginWithGoogleRequest	true	"body"
-//	@Success		200		{object}	LoginWithGoogleResponse
-//	@Failure		401		{object}	errors.CodedError
-//	@Failure		500		{object}	errors.CodedError
-//	@Router			/api/v1/login/google [post]
-func (s *AuthService) LoginWithGoogle(ctx context.Context, headers http.Header, r *http.Request) (*LoginWithGoogleResponse, error) {
+func (s *Service) LoginWithGoogle(ctx context.Context, headers http.Header, r *http.Request) (*LoginWithGoogleResponse, error) {
 	var request LoginWithGoogleRequest
 
 	if r.ContentLength == 0 {
@@ -75,4 +67,8 @@ func (s *AuthService) LoginWithGoogle(ctx context.Context, headers http.Header, 
 	}
 
 	return &LoginWithGoogleResponse{UserID: user.ID, Token: token}, nil
+}
+
+func (s *Service) GoogleLogin(context.Context, *pb.GoogleLoginRequest) (*pb.GoogleLoginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GoogleLogin not implemented")
 }
