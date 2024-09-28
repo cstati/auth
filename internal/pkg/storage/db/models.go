@@ -14,3 +14,9 @@ type User struct {
 	Email     string
 	CreatedAt pgtype.Timestamptz
 }
+
+type UserRole struct {
+	Email     string
+	Role      string
+	CreatedAt pgtype.Timestamptz
+}

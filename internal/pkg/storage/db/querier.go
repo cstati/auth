@@ -11,6 +11,8 @@ import (
 type Querier interface {
 	CreateUser(ctx context.Context, arg CreateUserParams) (int64, error)
 	GetUserByExternalID(ctx context.Context, googleID string) (User, error)
+	GetUserRolesByEmail(ctx context.Context, email string) ([]string, error)
+	GetUserRolesByID(ctx context.Context, id int64) ([]string, error)
 }
 
 var _ Querier = (*Queries)(nil)
