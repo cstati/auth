@@ -33,8 +33,10 @@ func (s *Service) ValidateToken(ctx context.Context, r *pb.ValidateTokenRequest)
 		return nil, status.New(codes.PermissionDenied, err.Error()).Err()
 	}
 
+	roles, err := s.db.GetUserRolesByID(ctx, payload.UserID)
+
 	return &pb.ValidateTokenResponse{
 		UserId: payload.UserID,
-		Roles:  payload.Roles,
+		Roles:  roles,
 	}, nil
 }

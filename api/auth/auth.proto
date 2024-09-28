@@ -54,6 +54,7 @@ message GoogleLoginRequest {
 message GoogleLoginResponse {
   int64 user_id = 1;
   string token = 2;
+  repeated string roles = 3;
 }
 
 message ValidateTokenRequest {

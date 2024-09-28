@@ -123,6 +123,12 @@
         },
         "token": {
           "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
